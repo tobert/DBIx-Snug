@@ -1,0 +1,103 @@
+=head1 NAME
+
+DBIx::Snug - the wheel, reinvented
+
+=head1 NOTE
+
+This module is intended for my own toy use.   I'm not promoting this as something
+people should use directly or as an example for perl coding.   Any modern perl5
+should be using Moose OO, so this module is mostly a curiosity these days.
+
+I wrote the bulk of this in 2006 for an unreleased project.   I came to like
+having a lightweight and (to me) hackable ORM, so I've carried this module
+around for a few years.   Now it's on github, but with a truncated history.
+
+=head1 DESCRIPTION
+
+DBIx::Snug is a lightweight ORM intended to be embedded in other projects.
+Its entire purpose for existence is to use very little of CPAN and thus be easy
+to embed in a larger project and not mess around with gobs of CPAN (I'm looking
+at you, DBIx::Class!).   It should be easy to put all of the pieces of Snug that
+you need into a single file (or even embedded in a script).
+
+This was also one of my early projects learning how to do tricky things with
+perl5's OO system, so some of the practices in the source are not considered
+kosher.    It's quite lean and fast though, so I feel the means justify the end.
+
+=head1 SYNOPSIS
+
+ package My::SubClass;
+ use base 'DBIx::Snug';
+
+ __PACKAGE__->setup(
+     table => 'sub_table',
+     primary_key => ['sub_table_id'],
+     columns => [
+        sub_table_id => [ 'int', 'sequence' ]
+        col1 => [ 'text', 'NULL' ],
+        col2 => [ 'text', 'NULL' ]
+     ]
+ );
+
+ # putting custom SQL in is pretty easy
+ # you're not required to return objects unless you want to
+ sub local_method_1 {
+     my($self, $name) = @_;
+     my $sth = $self->dbh->prepare(<<EOSQL);
+        SELECT a.foo AS bar
+        FROM table1 a
+             table2 b
+        WHERE a.id = b.thing_id
+          AND b.name = ?
+ EOSQL
+     $sth->execute($name);
+     my @out;
+     while (my $href = $sth->fetchrow_hashref) {
+        push @out, $href;
+     }
+     return @out;
+ }
+
+ 1;
+
+=head1 INSTALLATION
+
+Copy the DBIx directory into your local library path.  Build scripts
+are intentionally not implemented because that's not what this module
+is about.
+
+=head1 SEE ALSO
+
+ DBIx::Snug
+ DBIx::Snug::Search
+ DBIx::Snug::Join
+ DBIx::Snug::View
+ DBIx::Snug::DDL
+ DBIx::Snug::GraphViz
+ DBIx::Snug::SQLite
+ DBIx::Snug::MySQL
+ DBIx::Snug::MySQL::InformationSchema::TableConstraints
+ DBIx::Snug::MySQL::InformationSchema::Tables
+ DBIx::Snug::MySQL::InformationSchema::Columns
+
+=head1 AUTHORS
+
+ Al Tobey <tobert@gmail.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2006-2010 by Al Tobey.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+DBIx::Snug::Tie::InsertOrderHash (in Snug.pm) is an embedded version
+of Tie::InsertOrderHash which is Artistic/GPL2.
+
+You may distribute under the terms of either the GNU General Public License or
+the Artistic License, as specified in the Perl README file.
+
+http://search.cpan.org/dist/Tie-InsertOrderHash/InsertOrderHash.pm
+
+=cut
+
