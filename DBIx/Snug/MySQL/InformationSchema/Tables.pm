@@ -4,6 +4,7 @@ package DBIx::Snug::MySQL::InformationSchema::Tables;
 #                                                                         #
 # DBIx::Snug::MySQL::InformationSchema::Tables                            #
 # Copyright 2010, Albert P. Tobey <tobert@gmail.com>                      #
+# https://github.com/tobert/DBIx-Snug                                     #
 #                                                                         #
 ###########################################################################
 

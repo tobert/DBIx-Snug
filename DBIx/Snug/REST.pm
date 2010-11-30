@@ -4,6 +4,7 @@ package DBIx::Snug::REST;
 #                                                                         #
 # DBIx::Snug::REST                                                        #
 # Copyright 2008-2010, Albert P. Tobey <tobert@gmail.com>                 #
+# https://github.com/tobert/DBIx-Snug                                     #
 #                                                                         #
 ###########################################################################
 

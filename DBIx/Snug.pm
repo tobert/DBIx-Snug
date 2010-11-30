@@ -4,6 +4,10 @@ package DBIx::Snug;
 #                                                                         #
 # DBIx::Snug                                                              #
 # Copyright 2006-2010, Albert P. Tobey <tobert@gmail.com>                 #
+# https://github.com/tobert/DBIx-Snug                                     #
+#                                                                         #
+# This is open source software.  Please see the LICENSE section at the    #
+# end of this file or the README at the Github URL above.                 #
 #                                                                         #
 ###########################################################################
 

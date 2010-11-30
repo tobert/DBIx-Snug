@@ -4,6 +4,7 @@ package DBIx::Snug::MySQL::InformationSchema::Columns;
 #                                                                         #
 # DBIx::Snug::MySQL::InformationSchema::Columns                           #
 # Copyright 2010, Albert P. Tobey <tobert@gmail.com>                      #
+# https://github.com/tobert/DBIx-Snug                                     #
 #                                                                         #
 ###########################################################################
 

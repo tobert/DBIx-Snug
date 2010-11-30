@@ -4,6 +4,7 @@ package DBIx::Snug::Search;
 #                                                                         #
 # DBIx::Snug::Search                                                      #
 # Copyright 2006-2010, Albert P. Tobey <tobert@gmail.com>                 #
+# https://github.com/tobert/DBIx-Snug                                     #
 #                                                                         #
 ###########################################################################
 
